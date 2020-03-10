@@ -110,9 +110,24 @@ module.exports = merge(common, {
   },
   //排除第三方包打包
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'react-router-dom': 'ReactRouterDOM'
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    },
+    'react-router-dom': {
+      root: 'ReactRouterDOM',
+      commonjs2: 'react-router-dom',
+      commonjs: 'react-router-dom',
+      amd: 'react-router-dom'
+    }
   }
   // performance: {
   //   hints: 'warning', // 枚举
