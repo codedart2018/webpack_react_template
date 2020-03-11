@@ -6,6 +6,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const pkg = require('../package.json');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -53,7 +54,9 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"'}),
-    new MiniCssExtractPlugin({filename: 'css/tania.css'})
+    new MiniCssExtractPlugin({filename: 'css/tania.css'}),
+    //注释头信息
+    new webpack.BannerPlugin(pkg.name + ' v' + pkg.version + ' by ' + pkg.author + ' (c) ' + new Date().getFullYear() + ' Licensed ' + pkg.license)
   ],
   optimization: {
     minimizer: [
