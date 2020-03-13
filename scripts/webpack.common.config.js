@@ -19,6 +19,11 @@ module.exports = {
         //排除node_modules文件夹
         exclude: /node_modules/
       },
+      {
+        test: /\.(tsx|ts)$/,
+        use: 'awesome-typescript-loader',
+        exclude: /node_modules/
+      },
       //处理图片
       {
         test: /\.(jpg|png|gif)$/,
@@ -43,6 +48,9 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.scss', '.sass']
   },
   performance: {
     hints: dev ? false : 'warning'

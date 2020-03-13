@@ -82,5 +82,16 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     //用户名替代id,更新组件时在控制台输出组件的路径而不是数字ID，用在开发模式
     new webpack.NamedModulesPlugin()
-  ]
+  ],
+  performance: {
+    hints: 'warning',
+    // 整数类型（以字节为单位）
+    maxAssetSize: 30000000,
+    // 整数类型（以字节为单位）
+    maxEntrypointSize: 50000000,
+    assetFilter: function (assetFilename) {
+      // 提供资源文件名的断言函数
+      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+    }
+  }
 });
